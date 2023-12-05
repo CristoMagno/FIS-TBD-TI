@@ -8,19 +8,25 @@ create table recoleccion(
     pesoTotalB float(10),
     origenR varchar(50), 
     lote integer(10), 
-    fechaR date);
+    fechaR date,
+    primary key (lote));
+
 create table clasificacion(
     tipo varchar(20), 
-    cantidad integer(10));
+    loteP integer(10),
+    cantidad integer(10),
+    foreign key (lote) references recoleccion (lote)
+);
 
 
 create table extraccion(
+    lote integer(10),
     nombreM varchar(30),
     cantidadM integer(10),
     tipoM varchar(30),
-    lote integer(10),
     fechaRE date,
     bodegaA varchar(10),
-    numDesmontaje integer(10)
+    numDesmontaje integer(10),
+    primary key (numDesmontaje),
+    foreign key (lote) references recoleccion (lote)
 );
-
