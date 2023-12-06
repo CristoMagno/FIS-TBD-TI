@@ -13,7 +13,7 @@ create table recoleccion(
 
 create table clasificacion(
     tipo varchar(20), 
-    loteP integer(10),
+    lote integer(10),
     cantidad integer(10),
     foreign key (lote) references recoleccion (lote)
 );
