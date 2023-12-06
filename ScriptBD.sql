@@ -12,9 +12,10 @@ create table recoleccion(
     primary key (lote));
 
 create table clasificacion(
-    tipo varchar(20), 
     lote integer(10),
-    cantidad integer(10),
+    cantidadT integer(10),
+    reutili integer(10),
+    nReutili integer(10),
     foreign key (lote) references recoleccion (lote)
 );
 
