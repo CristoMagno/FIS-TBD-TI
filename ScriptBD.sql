@@ -1,33 +1,37 @@
 create database `bateria`;
 create table usuario(
     usuario varchar (30), 
-    contra VARCHAR(20), 
-    tipo varchar(20));
+    contra varchar(20), 
+    tipo varchar(20)
+);
 
-create table recoleccion(
-    pesoTotalB float(10),
-    origenR varchar(50), 
+create table almacenado(
     lote integer(10), 
-    fechaR date,
-    primary key (lote));
+    origen varchar(50),
+    pesoTotal float(10),
+    fecha date
+);
 
 create table clasificacion(
     lote integer(10),
-    cantidadT integer(10),
-    reutili integer(10),
-    nReutili integer(10),
-    foreign key (lote) references recoleccion (lote)
+    cantNReutili float(10),
+    cantReutili float(10),
+    total float(10),
+    foreign key (total) references almacenado (pesoTotal),
+    foreign key (lote) references almacenado (lote)
 );
 
 
 create table extraccion(
-    lote integer(10),
-    nombreM varchar(30),
-    cantidadM integer(10),
-    tipoM varchar(30),
-    fechaRE date,
-    bodegaA varchar(10),
     numDesmontaje integer(10),
+    fechaExtraccion date,
+    lote integer(10),
+    ctiAluminio float(10),
+    ctiCobre float(10),
+    ctiCobalto float(10),
+    ctiNiquel float(10),
+    ctiManganeso float(10),
+    ctiAluminio varchar(10),
     primary key (numDesmontaje),
-    foreign key (lote) references recoleccion (lote)
+    foreign key (lote) references almacenado (lote)
 );
